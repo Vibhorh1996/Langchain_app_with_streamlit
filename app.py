@@ -16,12 +16,6 @@ st.set_page_config(page_title='Ask the Doc App')
 st.title('📚💡Ask the Doc App')
 st.header("PDF Parser for Question Answering")
 
-st.markdown('''
-    #### Getting STARTED
-    Visit [OpenAI](https://platform.openai.com/account/api-keys)
-            to create account and API keys needed for execution
-''')
-
 
 hide_streamlit_style = """
             <style>
@@ -30,25 +24,10 @@ hide_streamlit_style = """
             </style>
             """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
-custom_footer = """
-            <div style = "position: fixed;bottom: 20px;width: 100%;">
-                Made with ❤️ by <a href="https://www.linkedin.com/in/tamunopriye-dagogo-george-191175167/">Tamunopriye</a>
-            </div>
-            """
-st.write(custom_footer, unsafe_allow_html=True)
 
 
 def get_response(db:object, query:str, openai_api_key:str) -> str:
-    """Function to # Create QA chain and get response from OPENAI llm
 
-    Args:
-        db (object): holds vectorstore from documents
-        query (str): Question from user
-        openai_api_key (str): OPENAI API key
-
-    Returns:
-        str: response fron Open AI
-    """
     # Create retriever interface
     retriever = db.as_retriever(
                     search_type="similarity",
@@ -67,13 +46,8 @@ def get_response(db:object, query:str, openai_api_key:str) -> str:
 
 
 def main() -> NoReturn:
-    """Main fuction to execute runs
 
-    Returns:
-        NoReturn: Returns no value
-    """
-
-    pdf_file = st.file_uploader(label='Upload PDF file', type='pdf')
+    pdf_file = st.file_uploader(label='Upload PDF file', type='pdf', accept_multiple_files=True)
 
     if pdf_file:
 
