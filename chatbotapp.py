@@ -6,8 +6,8 @@ import PyPDF2
 import streamlit as st
 import openai
 from typing import List, Tuple
-from segmentation import RecursiveCharacterTextSplitter
 from langchain.langchain import LangChain
+from langchain.text_splitter import RecursiveCharacterTextSplitter
 
 # Set page style
 st.set_page_config(page_title="DataBot: Chat with your Data!", page_icon=":book:")
