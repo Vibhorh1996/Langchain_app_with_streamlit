@@ -90,10 +90,10 @@ if __name__ == '__main__':
                 response = openai.Completion.create(
                     engine=deployment_name,
                     prompt=user_input,
-                    max_tokens=1024,
+                    max_tokens=5096,
                     n=1,
                     stop=None,
-                    temperature=0.5,
+                    temperature=0.2,
                     api_key=api_key,
                     api_base=api_base,
                 )
